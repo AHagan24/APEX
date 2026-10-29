@@ -4,6 +4,8 @@ type HelmetPlaceholderProps = {
   label: string;
   /** "panel" = framed technical box; "stage" = free-standing hero silhouette. */
   variant?: "panel" | "stage";
+  /** Short status line, e.g. "Loading 42%". */
+  status?: string;
   className?: string;
   children?: ReactNode;
 };
@@ -30,7 +32,12 @@ const corners = [
   "bottom-0 right-0 border-b-2 border-r-2",
 ];
 
-function PanelPlaceholder({ label, className = "", children }: VariantProps) {
+function PanelPlaceholder({
+  label,
+  status = "GLB // Pending",
+  className = "",
+  children,
+}: VariantProps) {
   return (
     <div
       role="img"
@@ -60,7 +67,7 @@ function PanelPlaceholder({ label, className = "", children }: VariantProps) {
       </div>
 
       <p className="absolute left-4 top-4 font-mono text-[10px] uppercase tracking-[0.25em] text-acid">
-        GLB // Pending
+        {status}
       </p>
       <p className="absolute bottom-4 left-4 right-4 font-mono text-[10px] uppercase tracking-[0.25em] text-chrome-500">
         {label}
@@ -73,7 +80,12 @@ function PanelPlaceholder({ label, className = "", children }: VariantProps) {
 
 // `@container` lets the visor text size itself with `cqw` units — relative
 // to the helmet's width rather than the viewport's.
-function StagePlaceholder({ label, className = "", children }: VariantProps) {
+function StagePlaceholder({
+  label,
+  status = "GLB // Pending",
+  className = "",
+  children,
+}: VariantProps) {
   return (
     <div
       role="img"
@@ -92,7 +104,7 @@ function StagePlaceholder({ label, className = "", children }: VariantProps) {
       </div>
 
       <p className="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.3em] text-acid">
-        GLB // Pending
+        {status}
       </p>
 
       {children}

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ArrowLine from "@/components/ui/ArrowLine";
 import Crosshair from "@/components/ui/Crosshair";
-import HelmetPlaceholder from "@/components/ui/HelmetPlaceholder";
+import HelmetScene from "@/components/three/HelmetScene";
 
 export default function Hero() {
   return (
@@ -45,21 +45,35 @@ export default function Hero() {
             <span className="text-chrome">ex</span>
           </h1>
 
-          <HelmetPlaceholder
-            variant="stage"
-            label="Hero helmet"
-            className="w-[min(52vw,56svh,40rem)] md:w-[min(44vw,56svh,40rem)]"
-          >
-            <p
-              aria-hidden="true"
-              className="absolute left-[56%] top-[66%] flex items-center gap-3 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.25em] text-chrome-100"
+          {/* Helmet + hero-only backdrop. By DOM order the backdrop paints
+              above the wordmark and below the canvas — no z-index needed. */}
+          <div className="relative">
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+              {/* Dark halo: lifts the helmet off the letters behind it */}
+              <div className="absolute inset-[-18%] rounded-full bg-[radial-gradient(closest-side,rgb(0_0_0/0.5),transparent)]" />
+              {/* Lime haze, echoing the lime reflections on the shell */}
+              <div className="absolute left-[-14%] top-[48%] h-1/2 w-3/5 rounded-full bg-acid/10 blur-3xl" />
+              {/* Floor glow, then a contact shadow on top of it. The canvas
+                  overscans, so the chin sits at ~104% of this box. */}
+              <div className="absolute left-1/2 top-[97%] h-[14%] w-[90%] -translate-x-1/2 rounded-[100%] bg-acid/15 blur-2xl" />
+              <div className="absolute left-1/2 top-[100%] h-[7%] w-[58%] -translate-x-1/2 rounded-[100%] bg-black/85 blur-xl" />
+            </div>
+
+            <HelmetScene
+              label="APEX racing helmet"
+              className="w-[min(72vw,32svh,40rem)] md:w-[min(50vw,66svh,46rem)]"
             >
-              <span className="flex size-6 items-center justify-center rounded-full bg-chrome-100 text-sm text-carbon-950">
-                +
-              </span>
-              Drag to reveal
-            </p>
-          </HelmetPlaceholder>
+              <p
+                aria-hidden="true"
+                className="absolute left-[56%] top-[66%] flex items-center gap-3 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.25em] text-chrome-100"
+              >
+                <span className="flex size-6 items-center justify-center rounded-full bg-chrome-100 text-sm text-carbon-950">
+                  +
+                </span>
+                Drag to reveal
+              </p>
+            </HelmetScene>
+          </div>
         </div>
 
         <div className="mb-6 md:absolute md:right-10 md:top-[68%] md:mb-0">

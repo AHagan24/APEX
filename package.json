@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "optimize:model": "gltf-transform meshopt assets/models/apex-helmet.source.glb public/models/apex-helmet.glb --level medium --quantize-position 16 --quantize-normal 12 --quantize-texcoord 16"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
@@ -17,6 +18,7 @@
     "three": "^0.186.1"
   },
   "devDependencies": {
+    "@gltf-transform/cli": "4.5.1",
     "@tailwindcss/turbopack": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
