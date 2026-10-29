@@ -1,26 +1,115 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Fonts are injected as CSS variables by next/font in layout.tsx,
+   so they must be referenced with `inline`. */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-anton);
+  --font-wide: var(--font-archivo);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --color-acid: #d7ff00;
+
+  --color-carbon-950: #070708;
+  --color-carbon-900: #0d0e10;
+  --color-carbon-800: #16181b;
+  --color-carbon-700: #23262a;
+
+  --color-chrome-100: #f2f4f5;
+  --color-chrome-300: #c4c9ce;
+  --color-chrome-500: #8a9096;
+}
+
+/* Brand wordmark: Archivo at its widest, heaviest italic. font-stretch
+   drives the variable font's `wdth` axis (max 125%). */
+@utility wordmark {
+  font-family: var(--font-wide);
+  font-style: italic;
+  font-weight: 900;
+  font-stretch: 125%;
+  letter-spacing: -0.03em;
+  line-height: 0.8;
+  text-transform: uppercase;
+}
+
+/* Twill-weave carbon fiber built from layered gradients — no image assets. */
+@utility bg-carbon {
+  background-color: var(--color-carbon-950);
+  background-image:
+    linear-gradient(27deg, #0b0c0d 5px, transparent 5px),
+    linear-gradient(207deg, #0b0c0d 5px, transparent 5px),
+    linear-gradient(27deg, #141518 5px, transparent 5px),
+    linear-gradient(207deg, #141518 5px, transparent 5px),
+    linear-gradient(90deg, #0e0f11 10px, transparent 10px),
+    linear-gradient(
+      #101113 25%,
+      #0c0d0e 25%,
+      #0c0d0e 50%,
+      transparent 50%,
+      transparent 75%,
+      #15171a 75%,
+      #15171a
+    );
+  background-size: 20px 20px;
+  background-position:
+    0 5px,
+    10px 0,
+    0 10px,
+    10px 5px,
+    0 0,
+    0 0;
+}
+
+/* Faint engineering grid for placeholders and technical panels. */
+@utility bg-tech-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Polished-chrome fill for oversized type. */
+@utility text-chrome {
+  background-image: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #c4c9ce 45%,
+    #5b6066 52%,
+    #e6e9eb 78%,
+    #9aa0a6 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Hollow outlined type. */
+@utility text-outline {
+  -webkit-text-stroke: 1px var(--color-chrome-500);
+  color: transparent;
+}
+
+/* Chamfered corners for buttons and tags. */
+@utility clip-chamfer {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+::selection {
+  background: var(--color-acid);
+  color: var(--color-carbon-950);
 }
