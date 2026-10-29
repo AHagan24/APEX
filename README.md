@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# APEX
+
+An immersive, motorsport-inspired portfolio experience built with Next.js, React Three Fiber, and Three.js.
+
+APEX combines realistic 3D visuals, interactive helmet customization, and cinematic animations with a futuristic Acidwave/Y2K design.
+
+## Vision
+
+Create a premium interactive website that feels like a motorsport experience rather than a traditional portfolio.
+
+**Design direction:**
+- Dark backgrounds, carbon fiber, metallic finishes, and acid lime (`#D7FF00`)
+- Bold motorsport typography and futuristic UI
+- Smooth transitions and responsive interactions
+- High-quality 3D models with optimized performance
+
+## Tech Stack
+
+- Next.js (App Router)
+- React and TypeScript
+- Tailwind CSS
+- Three.js
+- React Three Fiber
+- Drei
+- GSAP (planned)
+
+## Core Features
+
+### 1. Cinematic Hero
+A full-screen racing helmet experience with bold typography, dramatic lighting, and an interactive cursor-driven reveal.
+
+### 2. Explore
+A 360-degree interactive helmet viewer with rotation, zoom, and clickable hotspots highlighting helmet details.
+
+### 3. Customize
+An interactive helmet configurator allowing users to experiment with shell colors, visor tints, accents, and finishes.
+
+### 4. Finale
+A cinematic motorsport scene featuring a racing driver, an F1-inspired car, and the message "READY FOR GLORY."
+
+## Development Roadmap
+
+- [x] Initialize Next.js project
+- [x] Install Three.js, React Three Fiber, and Drei
+- [x] Add helmet GLB asset
+- [ ] Build initial 3D helmet viewer
+- [ ] Add lighting, camera, and controls
+- [ ] Create cinematic hero section
+- [ ] Build Explore experience
+- [ ] Build Customize experience
+- [ ] Add GSAP animations
+- [ ] Optimize models and performance
+- [ ] Polish responsive layouts and deploy
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The helmet model is stored at `public/models/apex-helmet.glb`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Status
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Early development. The initial focus is establishing the 3D rendering foundation before implementing advanced interactions and animations.
